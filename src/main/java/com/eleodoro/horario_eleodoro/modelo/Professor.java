@@ -65,15 +65,15 @@ public class Professor {
         return true;
     }
 
-    public void cadastrarProfessor(nome: String, cpf: String ){
+    public void cadastrarProfessor(String nome, String cpf ){
         
     }
 
-    private void consultarProfessor(cpf: String ){
+    private void consultarProfessor(String cpf ){
         
     }
 
-    private void validarCpf(cpf: String ){
+    private void validarCpf(String cpf){
         
     }
 

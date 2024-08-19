@@ -1,13 +1,13 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class agendaProfessorDto {
+public class AgendaProfessorDto {
     
     private int aulaPorDia;
     private String horario;
     private Turma turma;
     private Disciplina disciplina;
     
-    public agendaProfessorDto() {
+    public AgendaProfessorDto() {
     }
 
     public int getAulaPorDia() {

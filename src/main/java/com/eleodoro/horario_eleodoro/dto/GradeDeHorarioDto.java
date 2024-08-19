@@ -2,13 +2,13 @@ package com.eleodoro.horario_eleodoro.dto;
 
 import java.time.LocalDateTime;
 
-public class gradeDeHorarioDto {
+public class GradeDeHorarioDto {
     
     private LocalDateTime diaDaSemana;
     private int posicaoDaAula;
     private Turma turma;
     
-    public gradeDeHorarioDto() {
+    public GradeDeHorarioDto() {
     }
 
     public LocalDateTime getDiaDaSemana() {

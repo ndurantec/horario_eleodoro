@@ -1,5 +1,5 @@
 package com.eleodoro.horario_eleodoro.controller;
 
-public class AgendaProfessorController {
+public class Diciplinacontroller {
     
 }

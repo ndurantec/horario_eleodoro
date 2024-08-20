@@ -1,11 +1,21 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
-public class Turma {
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
+public class Turma implements Serializable {
 
     private String nome;
     private String sala;
 
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Deprecated
     public Turma() {
     }
 

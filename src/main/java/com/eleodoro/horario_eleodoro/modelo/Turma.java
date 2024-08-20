@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Turma implements Serializable {
@@ -13,6 +14,7 @@ public class Turma implements Serializable {
     private String sala;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
     @Deprecated

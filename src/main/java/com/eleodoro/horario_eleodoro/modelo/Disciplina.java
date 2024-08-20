@@ -1,25 +1,37 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
-import javax.swing.Spring;
+import java.io.Serializable;
 
-public class Disciplina {
+import javax.swing.String;
 
-    private Spring nome;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Disciplina implements Serializable{
+
+    private String nome;
     private int cargaHoraria;
     private Professor professor;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Deprecated 
     public Disciplina() {
     }
-    public Disciplina(Spring nome, int cargaHoraria, Professor professor) {
+    public Disciplina(String nome, int cargaHoraria, Professor professor) {
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
         this.professor = professor;
     }
-    public Spring getNome() {
+    public String getNome() {
         return nome;
     }
-    public void setNome(Spring nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
     public int getCargaHoraria() {

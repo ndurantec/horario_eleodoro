@@ -1,16 +1,16 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class Diciplinadto {
+public class DiciplinaDto {
  
-    private Spring nome;
+    private String nome;
     private int cargaHoraria;
     private Professor professor;
-    public Diciplinadto() {
+    public DiciplinaDto() {
     }
-    public Spring getNome() {
+    public String getNome() {
         return nome;
     }
-    public void setNome(Spring nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
     public int getCargaHoraria() {

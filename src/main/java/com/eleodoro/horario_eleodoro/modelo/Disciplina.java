@@ -2,7 +2,7 @@ package com.eleodoro.horario_eleodoro.modelo;
 
 import java.io.Serializable;
 
-import javax.swing.String;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

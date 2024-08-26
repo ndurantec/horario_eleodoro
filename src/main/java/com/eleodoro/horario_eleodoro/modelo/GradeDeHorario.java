@@ -1,15 +1,26 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
+import java.io.Serializable;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
-public class GradeDeHorario {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class GradeDeHorario implements Serializable {
     
     private LocalDateTime diaDaSemana;
     private int posicaoDaAula;
     private Turma turma;
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     
-    
+    @Deprecated
     public GradeDeHorario() {
     }
 

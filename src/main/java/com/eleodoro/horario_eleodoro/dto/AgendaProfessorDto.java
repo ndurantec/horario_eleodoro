@@ -1,5 +1,8 @@
 package com.eleodoro.horario_eleodoro.dto;
 
+import com.eleodoro.horario_eleodoro.modelo.Disciplina;
+import com.eleodoro.horario_eleodoro.modelo.Turma;
+
 public class AgendaProfessorDto {
     
     private int aulaPorDia;

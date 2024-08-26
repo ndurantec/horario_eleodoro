@@ -1,18 +1,30 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
-public class agendaProfessor {
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class AgendaProfessor implements Serializable {
     
     private int aulaPorDia;
     private String horario;
     private Turma turma;
     private Disciplina disciplina;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
-    
-    public agendaProfessor() {
+    @Deprecated
+    public AgendaProfessor() {
     }
 
 
-    public agendaProfessor(int aulaPorDia, String horario, Turma turma, Disciplina disciplina) {
+    public AgendaProfessor(int aulaPorDia, String horario, Turma turma, Disciplina disciplina) {
         this.aulaPorDia = aulaPorDia;
         this.horario = horario;
         this.turma = turma;
@@ -87,7 +99,7 @@ public class agendaProfessor {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        agendaProfessor other = (agendaProfessor) obj;
+        AgendaProfessor other = (AgendaProfessor) obj;
         if (aulaPorDia != other.aulaPorDia)
             return false;
         if (horario == null) {

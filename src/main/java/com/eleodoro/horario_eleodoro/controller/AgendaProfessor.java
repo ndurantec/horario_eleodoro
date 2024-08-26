@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/Diciplina")
-public class Diciplinacontroller {
+@RequestMapping(value = "/AgendaProfessor")
+public class AgendaProfessor{
 
     @GetMapping(value = "imprimir")
     public void imprimir(){
         System.out.println("chegou ate aqui");
     }
-
 }

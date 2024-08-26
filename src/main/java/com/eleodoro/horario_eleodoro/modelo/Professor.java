@@ -1,10 +1,23 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
-public class Professor {
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity 
+public class Professor implements Serializable{
     
     private String nome;
     private String cpf;
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Deprecated 
     public Professor() {
     }
 

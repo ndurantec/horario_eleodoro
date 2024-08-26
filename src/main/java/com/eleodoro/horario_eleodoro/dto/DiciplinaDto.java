@@ -1,5 +1,7 @@
 package com.eleodoro.horario_eleodoro.dto;
 
+import com.eleodoro.horario_eleodoro.modelo.Professor;
+
 public class DiciplinaDto {
  
     private String nome;

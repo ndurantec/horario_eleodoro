@@ -1,11 +1,11 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class professorDTo {
+public class professorDto {
     
     private String nome;
     private String cpf;
     
-    public professorDTo() {
+    public professorDto() {
     }
 
     public String getNome() {

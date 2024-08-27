@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/GradeDeHorario")
+@RequestMapping(value = "/gradedehorario")
 public class GradeDeHorarioController {
 
-    @GetMapping(value = "imprimir")
+    @GetMapping(value = "/imprimir")
     public void imprimir(){
         System.out.println("chegou até aqui");
     }

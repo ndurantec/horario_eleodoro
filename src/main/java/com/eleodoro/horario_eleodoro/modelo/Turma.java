@@ -14,7 +14,7 @@ public class Turma implements Serializable {
     private String sala;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Id
+    @Id 
     private Long id;
 
     @Deprecated

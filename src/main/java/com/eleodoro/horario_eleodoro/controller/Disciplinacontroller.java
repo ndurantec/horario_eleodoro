@@ -7,6 +7,7 @@ import javax.sound.midi.Patch;
 
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,8 @@ import com.eleodoro.horario_eleodoro.repository.Disciplinarepository;
 import com.eleodoro.horario_eleodoro.repository.Repositoryentity;
 
 @RestController
+//@CrossOrigin(origin = "http://127.0.0.1:8080")
+@CrossOrigin("*")
 @RequestMapping(value = "/disciplina")
 public class Disciplinacontroller {
 

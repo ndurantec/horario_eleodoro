@@ -10,12 +10,12 @@ import jakarta.persistence.Id;
 @Entity 
 public class Professor implements Serializable{
     
-    private String nome;
-    private String cpf;
-
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nome;
+    private String cpf;
+
 
     @Deprecated 
     public Professor() {

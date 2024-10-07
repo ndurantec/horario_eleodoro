@@ -24,4 +24,8 @@ public class professorDto {
         this.cpf = cpf;
     }
 
+    public Professor novoProfessor() {
+        return null;
+    }
+
 }

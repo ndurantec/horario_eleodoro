@@ -1,12 +1,14 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class turmaDto {
+import com.eleodoro.horario_eleodoro.modelo.Turma;
+
+public class TurmaDto {
     
 
     private String nome;
     private String sala;
     
-    public turmaDto() {
+    public TurmaDto() {
     }
 
     public String getNome() {
@@ -23,6 +25,11 @@ public class turmaDto {
 
     public void setSala(String sala) {
         this.sala = sala;
+    }
+
+    public static Turma novoTurma() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoTurma'");
     }
 
     

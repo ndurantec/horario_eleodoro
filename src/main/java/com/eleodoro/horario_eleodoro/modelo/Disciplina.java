@@ -10,23 +10,38 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Disciplina implements Serializable{
-
-    private String nome;
-    private int cargaHoraria;
-    private Professor professor;
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String nome;
+    private int cargaHoraria;
+    private Professor professor;
+
+
     @Deprecated 
     public Disciplina() {
     }
+
     public Disciplina(String nome, int cargaHoraria, Professor professor) {
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
         this.professor = professor;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+
     public String getNome() {
         return nome;
     }
@@ -101,5 +116,8 @@ public class Disciplina implements Serializable{
     public void removerProfessor( ){
         
     }
+
+    
+    
 
 }

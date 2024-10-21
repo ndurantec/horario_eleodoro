@@ -1,9 +1,10 @@
 package com.eleodoro.horario_eleodoro.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,58 +12,62 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.eleodoro.horario_eleodoro.dto.turmaDto;
-import com.eleodoro.horario_eleodoro.modelo.Disciplina;
+import com.eleodoro.horario_eleodoro.dto.TurmaDto;
+
 import com.eleodoro.horario_eleodoro.modelo.Turma;
+import com.eleodoro.horario_eleodoro.repository.Turmarepository;
+
 
 @RestController
-@RequestMapping(value = "/Turma")
-
-
+//@CrossOrigin(origin = "http://127.0.0.1:8080")
+@CrossOrigin("*")
+@RequestMapping(value = "/turma")
 public class TurmaController {
 
-    @GetMapping(value = "imprimir")
+    private Turmarepository turmaRepository;
+
+    @GetMapping(value = "/imprimir")
     public void imprimir(){
-        System.out.println("chegou ate aqui");
+        System.out.println("Chegou até aqui");
     }
-    
-    @PostMapping(value = "/turma")
-    public voud insert(@RequestBody turmaDto turmaDto){
 
-        System.out.println("Chegou no metodo insert");
-        System.out.println(TurmaDto.toString());
+    @PostMapping(value = "/insert")
+    public ResponseEntity<Turma> insert(@RequestBody TurmaDto turmaDto){
 
-        URI uri = ServletComponentBuilder.fromCurrentRequest()
+        Turma novaTurma = TurmaDto.novoTurma();
+        Turmarepository.save(novaTurma);
 
-        .path("{/id}")
+        System.out.println("Chegou no método insert");
+        System.out.println(turmaDto.toString());
+        
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("{/id}")
             .buildAndExpand(novaTurma.getId())
             .toUri();
 
         return ResponseEntity.created(uri).body(novaTurma);
-
-       
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity <Turma> buscarPorid (@PathVariable Long Id){
-    return Disciplinarepository.findByid(Id)
-        .map(registro -> ResponseEntity.ok().body(registro))
-        .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Turma> buscarPorId(@PathVariable Long id){
+        return Turmarepository.findByid(id)
+            .map(registro -> ResponseEntity.ok().body(registro))
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity <TUrma> update (@PathVariable Long id, @RequestBody Turma Turma){
+    public ResponseEntity<Turma> update(@PathVariable Long id, @RequestBody Turma turma){
+
+        Optional<Turma> turmaBanco = Turmarepository.findByid(id);
+
+        Turma turmaModificada = turmaBanco.get();
+
+        turmaModificada.setNome(turma.getNome());
+
+        Turmarepository.save(turmaModificada);
   
-       Optional<Turma> TurmaBanco = TurmaRepository.findByid(id);
-  
-       Turma TurmaModificado = TurmaBanco.get();
-  
-      TurmaModificado.setNome (disciplina.getNome());
-  
-      TurmaRepository.save (TurmaModificado);
-    
-      return ResponseEntity.noContent().build();
-  
-  }
+        return ResponseEntity.noContent().build();
+    }
 }

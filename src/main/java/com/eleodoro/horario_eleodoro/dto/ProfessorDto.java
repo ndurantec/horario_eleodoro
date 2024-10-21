@@ -1,11 +1,18 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class professorDto {
+import com.eleodoro.horario_eleodoro.modelo.Professor;
+
+public class ProfessorDto {
     
     private String nome;
     private String cpf;
     
-    public professorDto() {
+    public ProfessorDto() {
+    }
+   
+    public ProfessorDto(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -22,6 +29,10 @@ public class professorDto {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Professor novoProfessor() {
+        return new Professor(nome, cpf);
     }
 
 }

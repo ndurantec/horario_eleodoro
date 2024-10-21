@@ -6,15 +6,11 @@ import com.eleodoro.horario_eleodoro.modelo.Turma;
 
 public class Turmarepository {
 
-    public static void save(Turma novoTurma) {
+    public void save(Turma novaTurma) {
     }
 
-    public Turma get() {
+    public Optional<Turma> findById(Long id) {
         return null;
     }
 
-    public static Optional<Turma> findByid(Long id) {
-        return null;
-    }
-    
 }

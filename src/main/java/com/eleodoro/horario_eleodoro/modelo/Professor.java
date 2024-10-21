@@ -10,20 +10,28 @@ import jakarta.persistence.Id;
 @Entity 
 public class Professor implements Serializable{
     
-    private String nome;
-    private String cpf;
-
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String nome;
+    private String cpf;
+    
+    
     @Deprecated 
     public Professor() {
     }
-
+    
     public Professor(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -78,6 +86,9 @@ public class Professor implements Serializable{
         return true;
     }
 
+
+    
+
     public void cadastrarProfessor(String nome, String cpf ){
         
     }
@@ -109,8 +120,5 @@ public class Professor implements Serializable{
     public void obterDisciplina( ){
         
     }
-
-
-    
 
 }

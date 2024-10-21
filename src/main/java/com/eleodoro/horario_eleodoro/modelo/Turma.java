@@ -1,7 +1,6 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
 import java.io.Serializable;
-import java.util.Map;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,13 +9,13 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Turma implements Serializable {
-
+    
+    @Id 
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String sala;
 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Id 
-    private Long id;
 
     @Deprecated
     public Turma() {
@@ -28,6 +27,14 @@ public class Turma implements Serializable {
         this.sala = sala;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -93,13 +100,6 @@ public class Turma implements Serializable {
             return false;
         return true;
     }
-
-
-    public Map<String, ?> getId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
-    }   
-
-      
+       
 }
 

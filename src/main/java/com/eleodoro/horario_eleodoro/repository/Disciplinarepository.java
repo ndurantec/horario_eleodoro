@@ -16,5 +16,12 @@ public class Disciplinarepository {
     public static Optional<Disciplina> findByid(Long id) {
         return null;
     }
+
+    public boolean existsById(Long id) {
+        return false;
+    }
+
+    public void deleteById(Long id) {
+    }
     
 }

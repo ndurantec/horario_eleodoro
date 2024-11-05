@@ -1,12 +1,22 @@
 package com.eleodoro.horario_eleodoro.dto;
 
-public class turmaDto {
-    
+import com.eleodoro.horario_eleodoro.modelo.Turma;
 
+public class TurmaDto{
+
+    private int id;
     private String nome;
     private String sala;
     
-    public turmaDto() {
+    public void TurmaDto() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -25,5 +35,8 @@ public class turmaDto {
         this.sala = sala;
     }
 
-    
+    public Turma novoTurma() {
+        return new Turma(nome, sala);        
+    }
+   
 }

@@ -13,13 +13,13 @@ import jakarta.persistence.Id;
 @Entity
 public class GradeDeHorario implements Serializable {
     
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     private LocalDateTime diaDaSemana;
     private int posicaoDaAula;
     private Turma turma;
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
     
     @Deprecated
     public GradeDeHorario() {

@@ -1,5 +1,6 @@
 package com.eleodoro.horario_eleodoro.dto;
 
+import com.eleodoro.horario_eleodoro.controller.AgendaProfessorController;
 import com.eleodoro.horario_eleodoro.modelo.Disciplina;
 import com.eleodoro.horario_eleodoro.modelo.Turma;
 
@@ -43,6 +44,11 @@ public class AgendaProfessorDto {
 
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
+    }
+
+    public AgendaProfessorController novoAgendaProfessor() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoAgendaProfessor'");
     }
     
     

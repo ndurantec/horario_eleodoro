@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.eleodoro.horario_eleodoro.controller.repository.GradeDeHorarioRepository;
 import com.eleodoro.horario_eleodoro.dto.GradeDeHorarioDto;
 import com.eleodoro.horario_eleodoro.modelo.GradeDeHorario;
+import com.eleodoro.horario_eleodoro.repository.GradeDeHorarioRepository;
 
 @RestController
 @RequestMapping(value = "/gradedehorario")
@@ -31,6 +31,7 @@ public class GradeDeHorarioController {
 
     private GradeDeHorarioRepository gradedehorarioRepository;
 
+    @SuppressWarnings("unchecked")
     @PostMapping(value = "/insert")
     public ResponseEntity<GradeDeHorario> insert(@RequestBody GradeDeHorarioDto gradeDeHorarioDto){
 
@@ -49,6 +50,7 @@ public class GradeDeHorarioController {
 
     }
 
+    @SuppressWarnings("unchecked")
     @GetMapping(value = "/{id}")
     public ResponseEntity <GradeDeHorario> buscarPorId(@PathVariable Long Id){
         return (ResponseEntity<GradeDeHorario>) gradedehorarioRepository.findById(Id)
@@ -57,6 +59,7 @@ public class GradeDeHorarioController {
         
     }
 
+    @SuppressWarnings("unchecked")
     @PutMapping(value = "/{id}")
 public ResponseEntity<GradeDeHorario> update(@PathVariable Long id, @RequestBody GradeDeHorario gradedehorario) {
     
@@ -69,5 +72,16 @@ public ResponseEntity<GradeDeHorario> update(@PathVariable Long id, @RequestBody
     gradedehorarioRepository.save(gradedehorarioModificado);
 
     return ResponseEntity.noContent().build();
+}
+
+@SuppressWarnings("unchecked")
+@DeleteMapping(value = "/{id}")
+public ResponseEntity<GradeDeHorario> delete(@PathVariable Long id){
+    if(gradedehorarioRepository.existsById(id)){
+       gradedehorarioRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+    return ResponseEntity.notFound().build();
+
 }
 }

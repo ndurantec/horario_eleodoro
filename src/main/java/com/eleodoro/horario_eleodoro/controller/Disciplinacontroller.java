@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.eleodoro.horario_eleodoro.dto.DisciplinaDto;
 import com.eleodoro.horario_eleodoro.modelo.Disciplina;
-import com.eleodoro.horario_eleodoro.repository.Disciplinarepository;
+import com.eleodoro.horario_eleodoro.repository.DisciplinaRepository;
 
 @RestController
 //@CrossOrigin(origin = "http://127.0.0.1:8080")
@@ -26,7 +26,7 @@ import com.eleodoro.horario_eleodoro.repository.Disciplinarepository;
 public class Disciplinacontroller {
 
 
-    private Disciplinarepository disciplinarepository;
+    private DisciplinaRepository disciplinaRepository;
 
 
     @GetMapping(value = "/imprimir")
@@ -38,7 +38,7 @@ public class Disciplinacontroller {
     public ResponseEntity<Disciplina> insert(@RequestBody DisciplinaDto disciplinaDto){
 
         Disciplina novoDisciplina = disciplinaDto.novoDisciplina();
-        disciplinarepository.save(novoDisciplina);
+        disciplinaRepository.save(novoDisciplina);
 
         System.out.println("Chegou no metodo insert");
         System.out.println(disciplinaDto.toString());
@@ -56,7 +56,7 @@ public class Disciplinacontroller {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity <Disciplina> buscarPorid (@PathVariable Long Id){
-    return Disciplinarepository.findByid(Id)
+    return disciplinaRepository.findById(Id)
         .map(registro -> ResponseEntity.ok().body(registro))
         .orElse(ResponseEntity.notFound().build());
   }
@@ -64,13 +64,13 @@ public class Disciplinacontroller {
   @PutMapping (value = "/{id}")
   public ResponseEntity <Disciplina> update (@PathVariable Long id, @RequestBody Disciplina disciplina){
 
-     Optional<Disciplina> disciplinabanco = Disciplinarepository.findByid(id);
+     Optional<Disciplina> disciplinabanco = disciplinaRepository.findById(id);
 
      Disciplina disciplinamodificado = disciplinabanco.get();
 
     disciplinamodificado.setNome (disciplina.getNome());
 
-    disciplinarepository.save (disciplinamodificado);
+    disciplinaRepository.save (disciplinamodificado);
   
     return ResponseEntity.noContent().build();
 
@@ -78,8 +78,8 @@ public class Disciplinacontroller {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (disciplinarepository.existsById(id)) {
-            disciplinarepository.deleteById(id);
+        if (disciplinaRepository.existsById(id)) {
+            disciplinaRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } 
         return ResponseEntity.notFound().build();       

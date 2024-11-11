@@ -4,15 +4,25 @@ import com.eleodoro.horario_eleodoro.modelo.Professor;
 
 public class ProfessorDto {
     
+    private int id;
     private String nome;
     private String cpf;
     
     public ProfessorDto() {
     }
    
-    public ProfessorDto(String nome, String cpf) {
+    public ProfessorDto(String nome, String cpf, int id) {
         this.nome = nome;
         this.cpf = cpf;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -30,9 +40,10 @@ public class ProfessorDto {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+    
     public Professor novoProfessor() {
         return new Professor(nome, cpf);
     }
+
 
 }

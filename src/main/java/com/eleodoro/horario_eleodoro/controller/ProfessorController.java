@@ -21,7 +21,6 @@ import com.eleodoro.horario_eleodoro.modelo.Professor;
 import com.eleodoro.horario_eleodoro.repository.ProfessorRepository;
 
 @RestController
-//@CrossOrigin(origin = "http://127.0.0.1:8080")
 @CrossOrigin("*")
 @RequestMapping(value = "/professor")
 public class ProfessorController {
@@ -29,15 +28,13 @@ public class ProfessorController {
     @Autowired
     private ProfessorRepository professorRepository;
 
-
     @GetMapping(value = "/imprimir")
-    public void imprimir(){
+    public void imprimir() {
         System.out.println("chegou ate aqui");
     }
 
     @PostMapping(value = "/insert")
-    public ResponseEntity<Professor> insert(@RequestBody ProfessorDto professorDto){
-
+    public ResponseEntity<Professor> insert(@RequestBody ProfessorDto professorDto) {
         Professor novoProfessor = professorDto.novoProfessor();
         professorRepository.save(novoProfessor);
 
@@ -45,51 +42,42 @@ public class ProfessorController {
         System.out.println(professorDto.toString());
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("{/id}")
+            .path("/{id}")
             .buildAndExpand(novoProfessor.getId())
             .toUri();
 
         return ResponseEntity.created(uri).body(novoProfessor);
-
-        
-
     }
 
-
-    /*
-
     @GetMapping(value = "/{id}")
-    public ResponseEntity <Professor> buscarPorid (@PathVariable Long Id){
-    return ProfessorRepository.findByid(Id)
-        .map(registro -> ResponseEntity.ok().body(registro))
-        .orElse(ResponseEntity.notFound().build());
-  }
+    public ResponseEntity<Professor> buscarPorId(@PathVariable Long id) {
+        return professorRepository.findById(id)
+            .map(registro -> ResponseEntity.ok().body(registro))
+            .orElse(ResponseEntity.notFound().build());
+    }
 
-  @PutMapping (value = "/{id}")
-  public ResponseEntity <Professor> update (@PathVariable Long id, @RequestBody Professor professor){
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Professor> update(@PathVariable Long id, @RequestBody Professor professor) {
+        Optional<Professor> professorBanco = professorRepository.findById(id);
 
-     Optional<Professor> professorbanco = ProfessorRepository.findByid(id);
+        if (!professorBanco.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
 
-     Professor professormodificado = professorbanco.get();
+        Professor professorModificado = professorBanco.get();
+        professorModificado.setNome(professor.getNome());
 
-    professormodificado.setNome (professor.getNome());
+        professorRepository.save(professorModificado);
 
-    ProfessorRepository.save (professormodificado);
-  
-    return ResponseEntity.noContent().build();
-
-}
+        return ResponseEntity.noContent().build();
+    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (professorrepository.existsById(id)) {
-            professorrepository.deleteById(id);
+        if (professorRepository.existsById(id)) {
+            professorRepository.deleteById(id);
             return ResponseEntity.noContent().build();
-        } 
-        return ResponseEntity.notFound().build();       
         }
-
-        */
-
+        return ResponseEntity.notFound().build();
+    }
 }
-

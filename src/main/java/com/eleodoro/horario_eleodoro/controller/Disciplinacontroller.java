@@ -3,6 +3,7 @@ package com.eleodoro.horario_eleodoro.controller;
 import java.net.URI;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +26,7 @@ import com.eleodoro.horario_eleodoro.repository.DisciplinaRepository;
 @RequestMapping(value = "/disciplina")
 public class Disciplinacontroller {
 
-
+    @Autowired
     private DisciplinaRepository disciplinaRepository;
 
 
@@ -55,8 +56,8 @@ public class Disciplinacontroller {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity <Disciplina> buscarPorid (@PathVariable Long Id){
-    return disciplinaRepository.findById(Id)
+    public ResponseEntity <Disciplina> buscarPorid (@PathVariable Long id){
+    return disciplinaRepository.findById(id)
         .map(registro -> ResponseEntity.ok().body(registro))
         .orElse(ResponseEntity.notFound().build());
   }

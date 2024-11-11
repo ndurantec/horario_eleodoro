@@ -76,11 +76,7 @@ public class Disciplinacontroller {
 
 }
 
-<<<<<<< HEAD
-    
 
-}
-=======
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (disciplinaRepository.existsById(id)) {
@@ -89,6 +85,6 @@ public class Disciplinacontroller {
         } 
         return ResponseEntity.notFound().build();       
         }
->>>>>>> b96492817d72f51037ccbacdee80ded166adec11
+
 
 }

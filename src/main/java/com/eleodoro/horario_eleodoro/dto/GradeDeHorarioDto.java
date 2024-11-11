@@ -2,6 +2,7 @@ package com.eleodoro.horario_eleodoro.dto;
 
 import java.time.LocalDateTime;
 
+import com.eleodoro.horario_eleodoro.modelo.GradeDeHorario;
 import com.eleodoro.horario_eleodoro.modelo.Turma;
 
 public class GradeDeHorarioDto {
@@ -35,6 +36,11 @@ public class GradeDeHorarioDto {
 
     public void setTurma(Turma turma) {
         this.turma = turma;
+    }
+
+    public GradeDeHorario novoGradeDeHorario() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'novoGradeDeHorario'");
     }
 
     

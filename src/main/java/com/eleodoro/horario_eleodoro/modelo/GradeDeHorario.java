@@ -3,6 +3,7 @@ package com.eleodoro.horario_eleodoro.modelo;
 import java.io.Serializable;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,13 +13,13 @@ import jakarta.persistence.Id;
 @Entity
 public class GradeDeHorario implements Serializable {
     
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     private LocalDateTime diaDaSemana;
     private int posicaoDaAula;
     private Turma turma;
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
     
     @Deprecated
     public GradeDeHorario() {
@@ -142,6 +143,12 @@ public class GradeDeHorario implements Serializable {
 
     public void periodosDeAula(){
         
+    }
+
+
+    public Map<String, ?> getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
     }
     
 }

@@ -1,6 +1,10 @@
 package com.eleodoro.horario_eleodoro.modelo;
 
 import java.io.Serializable;
+import java.util.Map;
+import java.util.Optional;
+
+import com.eleodoro.horario_eleodoro.controller.AgendaProfessorController;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -150,5 +154,17 @@ public class AgendaProfessor implements Serializable {
     }
     public void obterProfessor(){
 
+    }
+
+
+    public static Map<String, ?> getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
+
+
+    public static Optional<AgendaProfessorController> findById(Long id2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 }
